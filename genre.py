@@ -1,5 +1,5 @@
 import pandas as pd
-raw = pd.read_csv('data/hot_100_audio_features.csv')
+raw = pd.read_csv('data/audio_features_hot_100_1958_2019.csv')
 print(raw.columns)
 songs = []
 genres = []
@@ -67,15 +67,15 @@ for row in raw.iterrows():
         supergenre = 'other'
 
     for genre in genre_list:
-        ids.append(row[1].SongID)
+        ids.append(row[1].track_id)
         genres.append(genre)
-        songs.append(row[1].Song)
+        songs.append(row[1].track)
         supergenres.append(supergenre)
 
     
 
-genre_df = pd.DataFrame({ 'songid':ids,'song':songs, 'genre':genres, 'supergenre':supergenres}).dropna(how='any')
+genre_df = pd.DataFrame({ 'track_id':ids,'song':songs, 'genre':genres, 'supergenre':supergenres}).dropna(how='any')
 # print(genre_df['genre'].nunique())
 
-genre_df.to_csv("songGenre.csv")
+genre_df.to_csv("data/songGenre.csv")
 print("Finished!")
