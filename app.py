@@ -5,8 +5,8 @@ import pandas as pd
 from pickle import load
 import numpy as np
 
-billboard_model = load_model('./Models/billb_spot_DL.h5')
-spotify_model = load_model('./Models/deep_audio.sav')
+billboard_model = load_model('./Models/bilb_spot_DL_v2.h5')
+spotify_model = load_model('./Models/spotify_pop_DL.h5')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
 # Flask Setup
@@ -23,8 +23,7 @@ def deepBillBoard():
 
 @app.route("/deepBillboard/song_param=<song_params>")
 def deepSong(song_params):
-    # out = model.predict(pd.DataFrame(minput))
-    out = song_params.split(',')[-1]
+
     song_param = song_params.split(',')
 
     minput = pd.DataFrame({'genre': song_param[0],
@@ -61,6 +60,7 @@ def deepSong(song_params):
 
     reportage = f'{report}\n{report2}'
     return(reportage)
+    # return(report)
 
 
 
