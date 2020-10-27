@@ -6,7 +6,7 @@ from pickle import load
 import numpy as np
 
 billboard_model = load_model('./Models/billb_spot_DL.h5')
-spotify_model = load_model('./Models/billb_spot_DL.h5')
+spotify_model = load_model('./Models/deep_audio.sav')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
 # Flask Setup
@@ -51,10 +51,16 @@ def deepSong(song_params):
 
     minput_scaled = X_scaler.transform(minput)
     nn = billboard_model(minput_scaled, training=False)
-    maxi = np.argmax(nn)
-    report = f'{maxi} : A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
+    nn_2 = spotify_model(minput_scaled, training=False)
 
-    return(report)
+    maxi = np.argmax(nn)
+    maxi2 = np.argmax(nn_2)
+
+    report = f'{maxi} : A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
+    report2 = f'{maxi2} : A song like this might land in the {(maxi2+1)*10}th Percentile of the Billboard Chart'
+
+    reportage = f'{report}\n{report2}'
+    return(reportage)
 
 
 
