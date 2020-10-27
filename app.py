@@ -5,8 +5,8 @@ import pandas as pd
 from pickle import load
 import numpy as np
 
-billboard_model = load_model('./Models/bilb_spot_DL_v2.h5')
-spotify_model = load_model('./Models/spotify_pop_DL.h5')
+billboard_model = load_model('./Models/billb_spot_DL.h5')
+# spotify_model = load_model('./Models/spotify_pop_DL.h5')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
 # Flask Setup
@@ -44,23 +44,23 @@ def deepSong(song_params):
     'time_signature': song_param[14],
     'week_pos': song_param[15],
     'instance': song_param[16],
-    'peak_pos': song_param[17],
-    'weeks_on_chart':song_param[18]}, 
+    # 'peak_pos': song_param[17],
+    'weeks_on_chart':song_param[17]}, 
     index = [0])
 
     minput_scaled = X_scaler.transform(minput)
     nn = billboard_model(minput_scaled, training=False)
-    nn_2 = spotify_model(minput_scaled, training=False)
+    # nn_2 = spotify_model(minput_scaled, training=False)
 
     maxi = np.argmax(nn)
-    maxi2 = np.argmax(nn_2)
+    # maxi2 = np.argmax(nn_2)
 
     report = f'{maxi} : A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
-    report2 = f'{maxi2} : A song like this might land in the {(maxi2+1)*10}th Percentile of the Billboard Chart'
+    # report2 = f'{maxi2} : A song like this might land in the {(maxi2+1)*10}th Percentile of the Billboard Chart'
 
-    reportage = f'{report}\n{report2}'
-    return(reportage)
-    # return(report)
+    # reportage = f'{report}\n{report2}'
+
+    return(report)
 
 
 
