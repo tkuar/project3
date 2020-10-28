@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="#">Navbar</a>
+    </nav>
+
+    <div class="container">
+        <label class="text-warning" for="genre">Genre</label>
+        <select id = "genre" placeholder = "Pop">
+          <option value="pop">Pop</option>
+          <option value="hiphop">Hip-Hop</option>
+          <option value="r&b">R&B</option>
+          <option value="rock">Rock</option>
+          <option value="house">House</option>
+          <option value="metal">Metal</option>
+          <option value="latin">Latin</option>
+          <option value="jazz">Jazz</option>
+          <option value="folk">Folk</option>
+          <option value="soul">Soul</option>
+          <option value="show tunes">Show Tunes</option>
+          <option value="country">Country</option>
+          <option value="adult standards">Adult Standards</option>
+          <option value="other">Other</option>
+          
+        </select>
+        <div class="row">
+         
+            <div class="col-lg-6 col-md-12">
+                
+                <div class="box slider_group">
+                    <label class="text-warning" for="explicit"> <a
+                            href="https://developer.spotify.com/documentation/web-api/reference/search/search/">Explicit</a>
+                        (Yes (1) or No (0))</label> <br>
+                    <input id="explicit" type="range" min="0" max="1" value="0" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="duration"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/search/search/">Track
+                            Duration</a> (ms)</label> <br>
+                    <input id="duration" type="range" min="29688" max="3079157" value="215640" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="popularity"> <a
+                            href="https://developer.spotify.com/documentation/web-api/reference/search/search/">Track
+                            Popularity</a> (0 to 100)</label> <br>
+                    <input id="popularity" type="range" min="0" max="100" value="50" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="danceability"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Danceability</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="danceability" type="range" min="0.0" max="1.0" value="0.606" step="0.001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="energy"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Energy</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="energy" type="range" min="0.0" max="1.0" value="0.634" step="0.0001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="key"> <a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Key</a>
+                        based on<a href="https://en.wikipedia.org/wiki/Pitch_class"> Pitch Class</a> (-1 to 11)</label>
+                    <br>
+                    <input id="key" type="range" min="-1" max="11" value="5" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="loudness"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Loudness</a>
+                        (dB)</label> <br>
+                    <input id="loudness" type="range" min="-60" max="2.291" value="-8.253" step="0.0001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="mode"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Mode</a>
+                        (Major (1) or minor (0))</label> <br>
+                    <input id="mode" type="range" min="0" max="1" value="1" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="speechiness"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Speechiness</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="speechiness" type="range" min="0.0" max="1.0" value="0.041" step="0.0001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="acousticness"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Acousticness</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="acousticness" type="range" min="0.0" max="1.0" value="0.194" step="0.0001"
+                        class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="instrumentalness"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Instrumentalness</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="instrumentalness" type="range" min="0.0" max="1.0" value="0.00000477" step="0.00000001"
+                        class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="liveness"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Liveness</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="liveness" type="range" min="0.0" max="1.0" value="0.131" step="0.0001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="valence"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Valence</a>
+                        (0.0 to 1.0)</label> <br>
+                    <input id="valence" type="range" min="0.0" max="1.0" value="0.627" step="0.0001" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="tempo"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Tempo</a>
+                        (bpm)</label> <br>
+                    <input id="tempo" type="range" min="20" max="250" value="120" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="time_signature"><a
+                            href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">Time
+                            Signature</a> (2 to 5)</label> <br>
+                    <input id="time_signature" type="range" min="2" max="5" value="4" class="slider">
+                    <span class="slider_label text-success"></span>
+                    <br>
+                    <label class="text-warning" for="pos">Current Position on Billoard Hot 100</label> <br>
+                    <input id="pos" type="range" min="1" max="100" value="50" class="slider">
+                    <span class="slider_label text-success"></span>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+
+                <div class="box">
+                    <canvas id="myChart" width="600" height="1500"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script type="text/javascript" src="../static/js/initial.js"></script>
+    
+    <script type="text/javascript" src="../static/js/app.js"></script>
+
+    <script type="text/javascript" src="../static/js/rangeValues.js"></script>
+
+</body>
+
+</html>
