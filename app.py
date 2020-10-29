@@ -10,8 +10,8 @@ from scipy.spatial import distance
 billboard_model = load_model('./Models/billb_spot_DL.h5')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
-centers = pd.read_csv('data/kmeans_centers.csv').drop(columns=['Unnamed: 0'])
-clusters = pd.read_csv('data/kmeans_clusters.csv')
+centers = pd.read_csv('data/kmeans_centers_scaled.csv').drop(columns=['Unnamed: 0'])
+clusters = pd.read_csv('data/kmeans_clusters_scaled.csv')
 centers_array = centers.to_numpy()
 
 
@@ -65,7 +65,7 @@ def deepSong(song_params):
 
     dists = []
     for i in range(len(centers_array)):
-        dist = distance.euclidean(minput.to_numpy(),centers_array[i])
+        dist = distance.euclidean(minput_scaled,centers_array[i])
         dists.append(dist)
     
     selection = np.argmin(dists)
