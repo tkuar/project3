@@ -10,7 +10,7 @@ from scipy.spatial import distance
 billboard_model = load_model('./Models/billb_spot_DL.h5')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
-centers = pd.read_csv('data/kmeans_centers.csv')
+centers = pd.read_csv('data/kmeans_centers.csv').drop(columns=['Unnamed: 0'])
 clusters = pd.read_csv('data/kmeans_clusters.csv')
 centers_array = centers.to_numpy()
 
@@ -51,7 +51,7 @@ def deepSong(song_params):
     'weeks_on_chart':song_param[17]}, 
     index = [0])
 
-    minput['genre'] = minput['genre'].replace('pop',float(0)).replace('country',float(1)).replace('hiphop',float(2)).replace('other',float(3)).replace('latin',float(3)).replace('latin',float(4)).replace('house',float(5)).replace('folk',float(6)).replace('r&b',float(7)).replace('adult standards',float(8)).replace('rock',float(9)).replace('metal',float(10)).replace('show tunes',float(11)).replace('soul',float(12)).replace('rap',float(13)).replace('jazz',float(14))
+    minput['genre'] = minput['genre'].replace('pop',float(0)).replace('country',float(1)).replace('hiphop',float(2)).replace('other',float(3)).replace('latin',float(4)).replace('house',float(5)).replace('folk',float(6)).replace('r&b',float(7)).replace('adult standards',float(8)).replace('rock',float(9)).replace('metal',float(10)).replace('show tunes',float(11)).replace('soul',float(12)).replace('rap',float(13)).replace('jazz',float(14))
     minput = minput.astype(np.float)
 
 
@@ -60,7 +60,7 @@ def deepSong(song_params):
 
     maxi = np.argmax(nn)
 
-    report = f'A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart!' 
+    report = f'A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart! ' 
 
 
     dists = []
@@ -69,9 +69,11 @@ def deepSong(song_params):
         dists.append(dist)
     
     selection = np.argmin(dists)
-    similarSongs = clusters.loc[clusters['cluster']==selection]['track_id'].values.tolist()[0:5]
+    similarSongs = clusters.loc[clusters['cluster']==selection]['track'].values.tolist()[0:5]
+    similarArtists =  clusters.loc[clusters['cluster']==selection]['artist'].values.tolist()[0:5]
+    similarPeaks =  clusters.loc[clusters['cluster']==selection]['peak_pos'].values.tolist()[0:5]
 
-    reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs}
+    reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs, 'similar_artists':similarArtists, 'similar_peaks':similarPeaks}
 
     # return render_template("index.html",dict=reportout)
     return(reportout)

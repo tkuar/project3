@@ -122,14 +122,20 @@ d3.select(".data").on("change", function () {
            console.log(data.report)
            var forecast = data.report;
            var simSongs = data.similar_songs;
-           var recSongs = ` Songs similar to yours include hits like ${simSongs[0]} and ${simSongs[1]}`;
+           var simArts = data.similar_artists;
+           var simPeaks = data.similar_peaks;
+           var recSongs = ` Songs similar to yours include hits like '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} and '${simSongs[1]}' by ${simArts[1]} which made it to ${simPeaks[1]} on the Billboard Top 100.`;
+           var recSongs_short = ` Songs similar to yours include hits like '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} on the Billboard Top 100.`;
            var blurb = d3.select('.summary')
            blurb.selectAll('P').remove().enter()
            
 
            blurb.append('p').text(forecast).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
 
-           blurb.append('p').text(recSongs).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+           if (simSongs.length < 2) { 
+            blurb.append('p').text(recSongs_short).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+           }
+           else {blurb.append('p').text(recSongs).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")}
 
 
 
