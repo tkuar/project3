@@ -4,12 +4,18 @@ from keras.models import load_model
 import pandas as pd
 from pickle import load
 import numpy as np
+from scipy.spatial import distance
 
 billboard_model = load_model('./Models/billb_spot_DL.h5')
 
 X_scaler = load(open('scaler.pkl', 'rb'))
+centers = pd.read_csv('data/kmeans_centers.csv')
+clusters = pd.read_csv('data/kmeans_clusters.csv')
+centers_array = centers.to_numpy()
+
 
 app = Flask(__name__)
+
 
 
 @app.route("/")
@@ -44,17 +50,29 @@ def deepSong(song_params):
     index = [0])
 
     minput['genre'] = minput['genre'].replace('pop',float(0)).replace('country',float(1)).replace('hiphop',float(2)).replace('other',float(3)).replace('latin',float(3)).replace('latin',float(4)).replace('house',float(5)).replace('folk',float(6)).replace('r&b',float(7)).replace('adult standards',float(8)).replace('rock',float(9)).replace('metal',float(10)).replace('show tunes',float(11)).replace('soul',float(12)).replace('rap',float(13)).replace('jazz',float(14))
-    
+    minput = minput.astype(np.float)
+
 
     minput_scaled = X_scaler.transform(minput)
     nn = billboard_model(minput_scaled, training=False)
 
     maxi = np.argmax(nn)
 
-    report = f'{maxi} : A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
+    report = f'A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
 
 
-    return(report)
+    dists = []
+    for i in range(len(centers_array)):
+        dist = distance.euclidean(minput.to_numpy(),centers_array[i])
+        dists.append(dist)
+    
+    selection = np.argmin(dists)
+    similarSongs = clusters.loc[clusters['cluster']==selection]['track_id'].values.tolist()[0:4]
+
+    reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs}
+
+
+    return(reportout)
 
 
 
