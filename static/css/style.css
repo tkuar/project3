@@ -3,8 +3,8 @@ body{
 }
 
 label {
-    font-size: medium;
-    font-weight: bold;
+    font-size: 95%;
+    font-weight: bolder;
     font-family: "Lucida Console", Courier, monospace;
     margin-top: 10px;
     padding-top: 10px;
@@ -20,6 +20,7 @@ label {
     padding-right: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
+    align-content: left;
 }
 
 .row{
@@ -59,11 +60,17 @@ label {
 }
 
 .slider_label {
-    font-size: small;
+    font-size: 80%;
     font-weight: bolder;
-    font-family: "Lucida Console", Courier, monospace;
+    font-family: Courier;
 } 
 
+#myChart {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 30px;
+    align-content: center;
+}
 
 
 
