@@ -4,32 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>StarStruck ML</title>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
+
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success" style="font-family:monospace;font-weight:bold;">
+        <a class="navbar-brand" href="#">StarStruck ML</a>
     </nav>
 
     <div class="container">
+        <div class="row summary" >
+            <h1 class="text-success text-center" style="font-family:monospace;font-weight:bold;">Your song on Spotify
+                has... Found its way on to the Billboard Hot 100!</h1>
+            <p class="text-warning" style="font-family:monospace;">Given the audio features that every song on Spotify
+                get assigned, and your songs current postion, the
+                number of times its been on theBillboard Hot 100!, and the number of weeks its been on the charts, our
+                app will predict the Highest Position your song will place on Billboard Hot 100!</p>
+        </div>
+    </div>
+    
+    <!-- Model -->
+    <div>
 
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-left">
+                <h1 class="text-danger" style="font-family:monospace;font-weight:bold;">Features</h1>
+            </div>
+
+        </div>
         <div class="row">
 
             <div class="col-lg-6 col-md-12">
 
                 <div class="box data">
+                    <!-- User Inputs -->
                     <label class="text-primary data" for="genre">Genre</label>
                     <select id="genre" placeholder="Pop" style="font-family:Courier;font-weight:bold;">
 
                         <option value="pop">Pop</option>
                         <option value="hiphop">Hip-Hop</option>
                         <option value="r&b">R&B</option>
+                        <option value="rap">Rap</option>
                         <option value="rock">Rock</option>
                         <option value="house">House</option>
                         <option value="metal">Metal</option>
@@ -174,19 +202,24 @@
                             song been on the Billboard Hot 100?</a> (1 to 100)</label> <br>
                     <input id="weeks_on_chart" type="range" min="1" max="87" value="27" class="slider">
                     <span class="slider_label text-warning"></span>
-
+                    <br>
                 </div>
-
+                <br>
                 <div class="flask-link">
 
-                    <a class="btn btn-success" href="" role="button">Get My Peak Position!</a>
+                    <!-- Link/Button that calls the Model -->
+                    <a class="btn btn-success" href="" role="button" style="font-family:monospace;font-weight:bold;">Get
+                        My Peak Position!</a>
 
                 </div>
+
+                <br>
 
             </div>
 
             <div class="col-lg-6 col-md-12">
 
+                <!-- Box that holds chart.js bar chart -->
                 <div class="box ">
 
                     <canvas id="myChart" width="700" height="1600"></canvas>
@@ -199,6 +232,7 @@
 
     </div>
 
+    <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -211,12 +245,16 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+    <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- D3 -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
+    <!-- JavaScript -->
     <script type="text/javascript" src="../static/js/initial.js"></script>
 
     <script type="text/javascript" src="../static/js/app.js"></script>
