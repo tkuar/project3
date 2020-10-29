@@ -20,7 +20,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def deepBillBoard():
-    return("Hello, i think it's working")
+
+    return render_template("index.html")
 
 
 @app.route("/deepBillboard/song_param=<song_params>")
