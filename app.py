@@ -60,7 +60,7 @@ def deepSong(song_params):
 
     maxi = np.argmax(nn)
 
-    report = f'A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart' 
+    report = f'A song like this might land in the {(maxi+1)*10}th Percentile of the Billboard Chart!' 
 
 
     dists = []
@@ -69,12 +69,12 @@ def deepSong(song_params):
         dists.append(dist)
     
     selection = np.argmin(dists)
-    similarSongs = clusters.loc[clusters['cluster']==selection]['track_id'].values.tolist()[0:4]
+    similarSongs = clusters.loc[clusters['cluster']==selection]['track_id'].values.tolist()[0:5]
 
     reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs}
 
-    return render_template("index.html",dict=reportout)
-    # return(reportout)
+    # return render_template("index.html",dict=reportout)
+    return(reportout)
 
 
 

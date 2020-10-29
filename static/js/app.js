@@ -109,5 +109,35 @@ d3.select(".data").on("change", function () {
     var flaskLinkAnchor = d3.select(".flask-link>a");
 
     // Change the <a>'s  href attribute to song_params route
-    flaskLinkAnchor.attr("href", `${song_params}`);
+    // flaskLinkAnchor.attr("href", `${song_params}`);
+
+    // Button listener
+    flaskLinkAnchor.on('click', function(){ 
+        d3.event.preventDefault()
+        console.log(song_params)
+
+        fetch(song_params).then(response => response.json()).then(data => {
+            // console.log(data)
+            
+           console.log(data.report)
+           var forecast = data.report;
+           var simSongs = data.similar_songs;
+           var recSongs = ` Songs similar to yours include hits like ${simSongs[0]} and ${simSongs[1]}`;
+           var blurb = d3.select('.summary')
+           blurb.selectAll('P').remove().enter()
+           
+
+           blurb.append('p').text(forecast).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+
+           blurb.append('p').text(recSongs).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+
+
+
+        
+        });
+    // FLASK API REQUEST HERE
+    
+    
+    
+    })
 }); 
