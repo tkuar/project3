@@ -109,5 +109,41 @@ d3.select(".data").on("change", function () {
     var flaskLinkAnchor = d3.select(".flask-link>a");
 
     // Change the <a>'s  href attribute to song_params route
-    flaskLinkAnchor.attr("href", `${song_params}`);
+    // flaskLinkAnchor.attr("href", `${song_params}`);
+
+    // Button listener
+    flaskLinkAnchor.on('click', function(){ 
+        d3.event.preventDefault()
+        console.log(song_params)
+
+        fetch(song_params).then(response => response.json()).then(data => {
+            // console.log(data)
+            
+           console.log(data.report)
+           var forecast = data.report;
+           var simSongs = data.similar_songs;
+           var simArts = data.similar_artists;
+           var simPeaks = data.similar_peaks;
+           var recSongs = ` Songs similar to yours include hits like '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} and '${simSongs[1]}' by ${simArts[1]} which made it to ${simPeaks[1]} on the Billboard Top 100.`;
+           var recSongs_short = ` Your song is similar to '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} on the Billboard Top 100.`;
+           var blurb = d3.select('.summary')
+           blurb.selectAll('P').remove().enter()
+           
+
+           blurb.append('p').text(forecast).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+
+           if (simSongs.length < 2) { 
+            blurb.append('p').text(recSongs_short).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
+           }
+           else {blurb.append('p').text(recSongs).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")}
+
+
+
+        
+        });
+    // FLASK API REQUEST HERE
+    
+    
+    
+    })
 }); 
