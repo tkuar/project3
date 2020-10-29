@@ -1,5 +1,6 @@
 #import dependencies
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, redirect
+
 from keras.models import load_model
 import pandas as pd
 from pickle import load
@@ -72,8 +73,8 @@ def deepSong(song_params):
 
     reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs}
 
-
-    return(reportout)
+    return render_template("index.html",dict=reportout)
+    # return(reportout)
 
 
 
