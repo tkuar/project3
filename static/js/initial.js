@@ -18,8 +18,9 @@ var week_pos = d3.select("#week_pos").property("value");
 var instance = d3.select("#instance").property("value");
 var weeks_on_chart = d3.select("#weeks_on_chart").property("value");
 
-// Scale the values between -1 and 1 to make the graph look more normal
+// Log inputs 
 console.log(explicit, duration, popularity, danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, time_signature, week_pos, instance, weeks_on_chart);
+// Scale the values between -1 and 1 to make the graph look more normal
 var explicitVal = parseInt(explicit);//Math.ceil(parseInt(explicit) * 300);
 var durationVal = parseInt(duration) / 3079157;//Math.ceil(parseInt(duration) * 0.0001);
 var popularityVal = parseInt(popularity) / 100;//Math.ceil(parseInt(popularity) * 3);
