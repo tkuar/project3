@@ -92,9 +92,10 @@ d3.select(".data").on("change", function () {
             }
         }
     });
-    var button = d3.select('#filter-btn');
-    button.on("click", function () {
-        var song_params = `/deepBillboard/song_param=${genre},${explicit},${duration},${popularity},${danceability},${energy},${key},${loudness},${mode},${speechiness},${acousticness},${instrumentalness},${liveness},${valence},${tempo},${time_signature},${week_pos},${instance},${weeks_on_chart}`;
-        console.log(song_params);
-    });
+
+    var song_params = `/deepBillboard/song_param=${genre},${explicit},${duration},${popularity},${danceability},${energy},${key},${loudness},${mode},${speechiness},${acousticness},${instrumentalness},${liveness},${valence},${tempo},${time_signature},${week_pos},${instance},${weeks_on_chart}`;
+
+    var flaskLinkAnchor = d3.select(".flask-link>a");
+
+    flaskLinkAnchor.attr("href", `${song_params}`);
 }); 
