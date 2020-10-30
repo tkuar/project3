@@ -108,18 +108,21 @@ d3.select(".data").on("change", function () {
     // Select the <a> child element
     var flaskLinkAnchor = d3.select(".flask-link>a");
 
-    // Change the <a>'s  href attribute to song_params route
-    // flaskLinkAnchor.attr("href", `${song_params}`);
 
     // Button listener
     flaskLinkAnchor.on('click', function(){ 
         d3.event.preventDefault()
         console.log(song_params)
 
+
+        // grab json output from flask 
         fetch(song_params).then(response => response.json()).then(data => {
            console.log(data)
             
+           
            console.log(data.report)
+
+           // parse items from json
            var forecast = data.report;
            var simSongs = data.similar_songs;
            var simArts = data.similar_artists;
@@ -132,9 +135,10 @@ d3.select(".data").on("change", function () {
            var blurb = d3.select('.summary')
            blurb.selectAll('P').remove().enter()
            
-
+           // append forecast
            blurb.append('p').text(forecast).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
 
+           // append correct blurb for clustering summary
            if (simSongs.length < 2) { 
             blurb.append('p').text(recSongs_short).attr('class',"text-warning").style("font-family:monospace;font-weight:bold;")
            }
@@ -144,8 +148,8 @@ d3.select(".data").on("change", function () {
 
         
         });
-    // FLASK API REQUEST HERE
     
+        
     
     
     })
