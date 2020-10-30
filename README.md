@@ -1,5 +1,5 @@
 # StarStruck
-![StartStruck](Images/StarStruck.jpg)
+![StartStruck](StarStruck.jpg)
 
 This project was completed by [Tameka](https://github.com/tkuar), [Miguel](https://github.com/msflores10307) and [Abla](https://github.com/Abla-Beatrice).
 
@@ -61,10 +61,10 @@ algorithms. The most successful algorithms was Neural Network. We also used unsu
 As a part of machine learning model building process, we must get familiar with our data. For this purpose, we will perform data exploration through visualizing various attributes present in the dataset. 
 
 * Simple Linear Regression
-![simple_linear](Images/simple_l_r.jpg)
+![simple_linear](simple_l_r.jpg)
 
 * Multiple Linear Regression
-![multiple_linear](Images/multiple_l_r.jpg)
+![multiple_linear](multiple_l_r.jpg)
 
 ## Predictive Model
 
