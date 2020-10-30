@@ -117,15 +117,18 @@ d3.select(".data").on("change", function () {
         console.log(song_params)
 
         fetch(song_params).then(response => response.json()).then(data => {
-            // console.log(data)
+           console.log(data)
             
            console.log(data.report)
            var forecast = data.report;
            var simSongs = data.similar_songs;
            var simArts = data.similar_artists;
            var simPeaks = data.similar_peaks;
-           var recSongs = ` Songs similar to yours include hits like '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} and '${simSongs[1]}' by ${simArts[1]} which made it to ${simPeaks[1]} on the Billboard Top 100.`;
-           var recSongs_short = ` Your song is similar to '${simSongs[0]}' by ${simArts[0]} which reached number ${simPeaks[0]} on the Billboard Top 100.`;
+           var clusterAvg = data.cluster_avg;
+           var selection = data.selection;
+           var clusterSize = data.cluster_size;
+           var recSongs = ` Songs similar to yours include hits like "${simSongs[selection[0]]}" by ${simArts[selection[0]]}, which reached number ${simPeaks[selection[0]]}, and "${simSongs[selection[1]]}" by ${simArts[selection[1]]}, which made it to ${simPeaks[selection[1]]} on the Billboard Top 100. We found ${clusterSize} tracks with audio parameters similar to yours. On average, these songs reach number ${clusterAvg} on the chart.`;
+           var recSongs_short = ` Your song is similar to '${simSongs[selection[0]]}' by ${simArts[selection[0]]} which reached number ${simPeaks[selection[0]]} on the Billboard Top 100. `;
            var blurb = d3.select('.summary')
            blurb.selectAll('P').remove().enter()
            

@@ -6,6 +6,7 @@ import pandas as pd
 from pickle import load
 import numpy as np
 from scipy.spatial import distance
+import random
 
 billboard_model = load_model('./Models/billb_spot_DL.h5')
 
@@ -16,7 +17,6 @@ centers_array = centers.to_numpy()
 
 
 app = Flask(__name__)
-
 
 
 @app.route("/")
@@ -69,11 +69,15 @@ def deepSong(song_params):
         dists.append(dist)
     
     selection = np.argmin(dists)
-    similarSongs = clusters.loc[clusters['cluster']==selection]['track'].values.tolist()[0:5]
-    similarArtists =  clusters.loc[clusters['cluster']==selection]['artist'].values.tolist()[0:5]
-    similarPeaks =  clusters.loc[clusters['cluster']==selection]['peak_pos'].values.tolist()[0:5]
+    similarSongs = clusters.loc[clusters['cluster']==selection]['track'].values.tolist()[0:11]
+    similarArtists =  clusters.loc[clusters['cluster']==selection]['artist'].values.tolist()[0:11]
+    similarPeaks =  clusters.loc[clusters['cluster']==selection]['peak_pos'].values.tolist()[0:11]
+    clusterAvg = clusters.loc[clusters['cluster']==selection]['peak_pos'].mean().round()
+    clusterSize = clusters.loc[clusters['cluster']==selection]['track_id'].nunique()
 
-    reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs, 'similar_artists':similarArtists, 'similar_peaks':similarPeaks}
+    selections = random.sample(range(0,11),2)
+
+    reportout = {'peak_decile':str((maxi+1)*10), 'report':report, 'similar_songs': similarSongs, 'similar_artists':similarArtists, 'similar_peaks':similarPeaks,'cluster_avg':clusterAvg, 'selection':selections, 'cluster':f'{selection}','cluster_size':f'{clusterSize}'}
 
     # return render_template("index.html",dict=reportout)
     return(reportout)
