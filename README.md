@@ -1,5 +1,5 @@
 # StarStruck
-![StartStruck](StarStruck.jpg)
+![StartStruck](Images/starstruckML.gif)
 
 This project was completed by [Tameka](https://github.com/tkuar), [Miguel](https://github.com/msflores10307) and [Abla](https://github.com/Abla-Beatrice).
 
@@ -71,10 +71,10 @@ As a part of machine learning model building process, we must get familiar with 
 - X = Peak Position
 - Y = Weeks on Chart
 
-![simple_linear](simple_l_r.jpg)
+![simple_linear](Images/simple_l_r.jpg)
 
 ### Multiple Linear Regression
-![multiple_linear](multiple_l_r.jpg)
+![multiple_linear](Images/multiple_l_r.jpg)
 
 ## Predictive Model
 
