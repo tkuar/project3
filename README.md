@@ -13,6 +13,13 @@ Link</strong></a>
 </p>
 </p>
 
+### Technologies Used
+* Python
+* Pandas
+* HTML/CSS
+* JavaScript
+* Heroku
+
 ## Analyzing and Predicting Songs
 
 ## Inspiration
@@ -84,10 +91,3 @@ to use more data to reduce the variability of results. Instead of using almost 3
 we would like to look into additional audio features, such
 as duration, which was not included in this project but has
 the potential to predict a songs Billboard success.
-
-### Technologies Used
-* Python
-* Pandas
-* HTML/CSS
-* JavaScript
-* Heroku
