@@ -60,10 +60,13 @@ algorithms. The most successful algorithms was Neural Network. We also used unsu
 
 As a part of machine learning model building process, we must get familiar with our data. For this purpose, we will perform data exploration through visualizing various attributes present in the dataset. 
 
-* Simple Linear Regression
+### Simple Linear Regression
+- X = Peak Position
+- Y = Weeks on Chart
+
 ![simple_linear](simple_l_r.jpg)
 
-* Multiple Linear Regression
+### Multiple Linear Regression
 ![multiple_linear](multiple_l_r.jpg)
 
 ## Predictive Model
@@ -76,7 +79,7 @@ During training, these models analyzed a variety of song features.
 We learned how we can predict which songs users will like based on the playlist listed on Spotify with the help of the Machine Learning Classifier. 
 
 The analysis showed that ***Neural Network*** yielded the highest accuracy, precision and recall of the algorithms tested.
-Random Forest suffered from overfitting. We would like
+***Random Forest*** suffered from overfitting. We would like
 to use more data to reduce the variability of results. Instead of using almost 30000 songs, we hope to include all Spotify Data taken from a longer time period, and a similar number of non-hits from the MSD. Furthermore,
 we would like to look into additional audio features, such
 as duration, which was not included in this project but has
