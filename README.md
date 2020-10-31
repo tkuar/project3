@@ -24,7 +24,7 @@ Link</strong></a>
 
 ## Inspiration
 If there’s one thing we can’t live without, it’s Music. We love music and getting lost in it. In the current study, we approached the Hit Song Science problem, aiming to predict which songs will become Billboard Hot 100 hits. We collated a dataset of approximately
-**20000 hit and non-hit songs** and extracted each songs audio
+**20000+ hit and non-hit songs** and extracted each songs audio
 features from the **Spotify Web API**. We were able to predict
 the Billboard success of a song with approximately 90%
 accuracy on the validation set, using two machine-learning
@@ -38,29 +38,53 @@ algorithms. The most successful algorithms was Neural Network. We also used unsu
 
 ## Dataset and Features
 
-1. Acousticness - The higher the value the more acoustic the song is.
+### Spotify API INFO
+
+1. Acousticness — The higher the value the more acoustic the song is.
 
 2. Danceability — The higher the value, the easier it is to dance to this song.
 
-3. Duration -  The duration of the track in milliseconds.
+3. Duration —  The duration of the track in milliseconds.
 
 4. Energy — The energy of a song represent a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud and noisy.
 
-5. Instrumentalness - Predicts whether a track contains no vocals. "Ooh" and "Aah" sounds are treated as instrumental in this context.
+5. Instrumentalness — Predicts whether a track contains no vocals. "Ooh" and "Aah" sounds are treated as instrumental in this context.
 
-6. Liveness - Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. 
+6. Liveness — Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. 
 
 7. Loudness — Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primay psychological correlate of physical strengh(amplitude).
 
-8. Mode - Indicates the modality(major or minor) of a track, the type of scale from which its melodic content is derived. 
+8. Mode — Indicates the modality(major or minor) of a track, the type of scale from which its melodic content is derived. 
 
-9. Speechiness - Detects the presence of spoken words in a track.
+9. Speechiness — Detects the presence of spoken words in a track.
 
-10. Tempo - The overall estimated tempo of track in beats per minute(BPM). In musical terminoligy, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
+10. Tempo — The overall estimated tempo of track in beats per minute(BPM). In musical terminoligy, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
 
-11. Time_Signature - An estimated overall time signature of a track. The time signature is a notational convention to specify how may beats are in each bar.
+11. Time_Signature — An estimated overall time signature of a track. The time signature is a notational convention to specify how may beats are in each bar.
 
 12. Valence — The higher the value, the more positive mood for the song.
+
+### Billboard Data INFO
+
+1. Billboard Chart URL
+
+2. WeekID
+
+3. Song Name
+
+3. Performer Name
+
+4. SongID - Concatenation of song & performer
+
+5. Current Week on Chart
+
+6. Instance (this is used to separate breaks on the chart for a given song. Example, an instance of 6 tells you that this is the sixth time this song has appeared on the chart)
+
+7. Previous Week Position
+
+8. Peak Position (as of the corresponding week)
+
+9. Weeks on Chart (as of the corresponding week)
 
 
 ## Exploratory Data Analysis
@@ -74,6 +98,8 @@ As a part of machine learning model building process, we must get familiar with 
 ![simple_linear](Images/simple_l_r.jpg)
 
 ### Multiple Linear Regression
+- X_features =[Explicit, Duration, Popularity, Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Current Week Position, Instance, Peak Position]
+- Y = Weeks on Chart
 ![multiple_linear](Images/multiple_l_r.jpg)
 
 ## Predictive Model
