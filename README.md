@@ -64,6 +64,10 @@ algorithms. The most successful algorithms was Neural Network. We also used unsu
 
 12. Valence — The higher the value, the more positive mood for the song.
 
+13. Popularity —	The higher the value, the more popular the song. Popularity is based mainly on the total number of playbacks. (Note: This value is not updated in real-time and may therefore lag behind in actual popularity.)
+
+14. Explicit — Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
+
 ### Billboard Data INFO
 
 1. Billboard Chart URL
