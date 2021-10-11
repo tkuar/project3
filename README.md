@@ -23,15 +23,15 @@ Link</strong></a>
 ## Analyzing and Predicting Songs
 
 ## Inspiration
-If there’s one thing we can’t live without, it’s Music. We love music and getting lost in it. In the current study, we approached the Hit Song Science problem, aiming to predict which songs will become Billboard Hot 100 hits. We collated a dataset of approximately
+If there’s one thing we can’t live without, it’s Music. We love music and getting lost in it. In the current study, we approached the Hit Song Science problem, aiming to predict which songs will become Billboard Hot 100 hits. We collated a [dataset](https://data.world/kcmillersean/billboard-hot-100-1958-2017) of approximately
 **20000+ hit and non-hit songs** and extracted each songs audio
-features from the **Spotify Web API**. We were able to predict
+features from the **[Spotify Web API](https://developer.spotify.com/documentation/web-api/)**. We were able to predict
 the Billboard success of a song with approximately 90%
 accuracy on the validation set, using two machine-learning
 algorithms. The most successful algorithms was Neural Network. We also used unsupervised approach
 
 ## Goals
-* Using a combinaison of **Features** from Billborad chart and spotify data to estimate **Peak Position** on the Billboard chart.
+* Using a combination of **Features** from Billborad chart and spotify data to estimate **Peak Position** on the Billboard chart.
 
 * Approaching this problem both supervised and unsupervised methods.
 
